@@ -8,9 +8,9 @@
 <body>
 <h1> Events </h1>
     <div id="app">
-        <form action="done.html" v-on:submit.prevent="handleSubmit">
+        <form action="done.html" @submit.prevent="handleSubmit">
             <button type="submit" class="button-primary">
-                Submit!
+                Counter: {{ count }}
             </button>
         </form>
     </div>
@@ -18,9 +18,13 @@
     <script>
         new Vue({
             el: '#app',
+            data: {
+                count: 0
+            },
             methods: {
                 handleSubmit: function(){
-                    alert("Catched!")
+                    this.count += 1;
+                    alert("Catched!");
                 }
             }
         })
