@@ -5,14 +5,16 @@
     <title>Components</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 </head>
-<body>
-<h1> Components </h1>
+<body class="container">
+    <h1> Components </h1>
     <div id="app">
-        <counter header="Likes"></counter>
+        <counter header="Likes" bg_color="green"></counter>
         <counter header="Dislikes"></counter>
     <template id="counter-template">
-        <h2> {{header}}</h2>
-        <button class="button-primary" @click="incrementCount"> Increment {{ count }} </button>
+        <h4> {{ header }} </h4>
+        <button class="button-primary" style="background-color: {{ bg_color }}" @click="incrementCount">
+            Increment {{ count }}
+        </button>
     </template>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.19/vue.js"></script>
@@ -20,14 +22,14 @@
         Vue.component('counter', {
             template: '#counter-template',
             data: function(){
-                return { count: 0}
+                return { count: 0, bg_color: "#33C3F0"}
             },
             methods: {
                 incrementCount: function(){
                     this.count += 1
                 }
             },
-            props: ['header']
+            props: ['header', 'bg_color']
         });
         new Vue({
             el: '#app',
