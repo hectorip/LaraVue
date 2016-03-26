@@ -5,8 +5,9 @@
     <title>Vue show</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 </head>
-<body>
+<body class="container">
     <h1> Vue show</h1>
+    <h2> Vue show</h2>
     <div id="app">
         <form action="">
             <div class="error" v-show="!message">
@@ -14,7 +15,7 @@
             </div>
             <textarea v-model="message"></textarea>
             <br>
-            <button type="submit" v-show="message" class="button">
+            <button type="submit" v-show="message" class="button-primary">
                 Envíar mensaje
             </button>
         </form>

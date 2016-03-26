@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+</head>
+<body>
+<h1> Events </h1>
+    <div id="app">
+        <form action="done.html" v-on:submit.prevent="handleSubmit">
+            <button type="submit" class="button-primary">
+                Submit!
+            </button>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.19/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            methods: {
+                handleSubmit: function(){
+                    alert("Catched!")
+                }
+            }
+        })
+    </script>
+</body>
+</html>
