@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue show</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+</head>
+<body>
+    <h1> Vue show</h1>
+    <div id="app">
+        <form action="">
+            <div class="error" v-show="!message">
+                Debes escribir un mensaje
+            </div>
+            <textarea v-model="message"></textarea>
+            <br>
+            <button type="submit" v-show="message" class="button">
+                Envíar mensaje
+            </button>
+        </form>
+        <pre>
+            {{ $data | json }}
+        </pre>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.19/vue.min.js"></script>
+    <script>
+        var data ={
+            message: ""
+        }
+        new Vue({
+            el: '#app',
+            data: data
+        })
+    </script>
+</body>
+</html>
