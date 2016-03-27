@@ -9,15 +9,43 @@
     <div id="app">
 
         <h1> Plans and pricing</h1>
-        <h2> Simple Vue template with Skeleton</h2>
+        <h5> Exercise</h5>
+        <div v-for="plan in plans">
+            <plan :plan="plan" :active.sync="active"> </plan>
+        </div>
         <pre>
-            {{  | json }}
+            {{ $data | json }}
         </pre>
     </div>
+    <template id="plan-template">
+        <span> <strong> {{ plan.name }} </strong> </span>
+        <span> ${{ plan.price }}/month </span>
+        <button @click="setActivePlan"> Upgrade </button>
+    </template>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.19/vue.min.js"></script>
     <script>
+        Vue.component('plan', {
+                template: "#plan-template",
+                props: ['plan', 'active'],
+                methods: {
+                    setActivePlan: function() {
+                        console.log("Runs");
+                        this.active = this.plan;
+                    }
+                },
+                data: function() {
+                    return { active: {} };
+                }
+            }
+        );
         var data ={
-            message: "Hello World"
+            plans: [
+                { name: 'Enterprise', price: 100 },
+                { name: 'Pro', price: 50 },
+                { name: 'Personal', price: 10 },
+                { name: 'Free', price: 0 },
+            ],
+            active: {}
         }
         new Vue({
             el: '#app',
