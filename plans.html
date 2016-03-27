@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <title>Plans and pricing</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/railscasts.min.css">
 </head>
 <body>
+<style>
+    .plans-cell{
+        width: 200px;
+        display: inline-block;
+    }
+</style>
     <div id="app">
 
         <h1> Plans and pricing</h1>
@@ -13,16 +20,21 @@
         <div v-for="plan in plans">
             <plan :plan="plan" :active.sync="active"> </plan>
         </div>
+        <div>
         <pre>
-            {{ $data | json }}
+        <code class="json" theme="">
+{{ $data | json }}
+        </code>
         </pre>
     </div>
     <template id="plan-template">
-        <span> <strong> {{ plan.name }} </strong> </span>
-        <span> ${{ plan.price }}/month </span>
+        <span class='plans-cell'> <strong> {{ plan.name }} </strong> </span>
+        <span class='plans-cell'> ${{ plan.price }}/month </span>
         <button @click="setActivePlan"> Upgrade </button>
     </template>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.19/vue.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+    
     <script>
         Vue.component('plan', {
                 template: "#plan-template",
@@ -50,7 +62,9 @@
         new Vue({
             el: '#app',
             data: data
-        })
+        });
+        hljs.initHighlightingOnLoad();
     </script>
+
 </body>
 </html>
