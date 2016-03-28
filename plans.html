@@ -17,19 +17,20 @@
 
         <h1> Plans and pricing</h1>
         <h5> Exercise</h5>
+
         <div v-for="plan in plans">
-            <plan :plan="plan" :active.sync = 'active_g'> </plan>
+            <plan :plan="plan" :active.sync="active"> </plan>
         </div>
-        <div>
+{{ $data | json }}
+    
         <pre>
         <code class="json" theme="">
 {{ $data | json }}
         </code>
         </pre>
+
     </div>
     <template id="plan-template">
-{{ $data | json }}
-
         <span class='plans-cell'> <strong> {{ plan.name }} </strong> </span>
         <span class='plans-cell'> ${{ plan.price }}/month </span>
         <button @click="setActivePlan"> Upgrade </button>
@@ -45,13 +46,12 @@
                     setActivePlan: function() {
                         console.log("Runs");
                         console.log(this)
-                        this.active = "yes";
+                        this.active = this.plan;
                         console.log(this.active)
+        hljs.initHighlightingOnLoad();
+                        
                     }
                 },
-                data: function() {
-                    return { active: false };
-                }
             }
         );
         var data ={
@@ -61,7 +61,7 @@
                 { name: 'Personal', price: 10 },
                 { name: 'Free', price: 0 },
             ],
-            active_g: {}
+            active: {}
         }
         new Vue({
             el: '#app',
