@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 </head>
 <body>
-<style>
-    .plans-cell{
-        width: 200px;
-        display: inline-block;
-    }
-</style>
+    <style>
+        .plans-cell{
+            width: 200px;
+            display: inline-block;
+        }
+    </style>
+
     <div id="app">
 
         <h1> Plans and pricing</h1>
@@ -39,8 +40,6 @@
                 props: ['plan', 'active'],
                 methods: {
                     setActivePlan: function() {
-                        console.log("Runs");
-                        console.log(this)
                         this.active = this.plan;
                     }
                 },
