@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Plans and pricing</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/railscasts.min.css">
 </head>
 <body>
 <style>
@@ -21,12 +20,8 @@
         <div v-for="plan in plans">
             <plan :plan="plan" :active.sync="active"> </plan>
         </div>
-{{ $data | json }}
-    
         <pre>
-        <code class="json" theme="">
 {{ $data | json }}
-        </code>
         </pre>
 
     </div>
@@ -36,7 +31,7 @@
         <button @click="setActivePlan"> Upgrade </button>
     </template>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.19/vue.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+
 
     <script>
         Vue.component('plan', {
@@ -47,9 +42,6 @@
                         console.log("Runs");
                         console.log(this)
                         this.active = this.plan;
-                        console.log(this.active)
-        hljs.initHighlightingOnLoad();
-                        
                     }
                 },
             }
@@ -67,7 +59,6 @@
             el: '#app',
             data: data
         });
-        hljs.initHighlightingOnLoad();
     </script>
 
 </body>
