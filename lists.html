@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Plans and pricing</title>
+    <title>Lists</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 </head>
 <body>
@@ -15,36 +15,21 @@
 
     <div id="app">
 
-        <h1> Plans and pricing</h1>
-        <h5> Exercise</h5>
+        <h1> Lists </h1>
 
         <div v-for="plan in plans">
-            <plan :plan="plan" :active.sync="active"> </plan>
+            {{plan.name}} - {{ plan.price }}
         </div>
         <pre>
 {{ $data | json }}
         </pre>
 
     </div>
-    <template id="plan-template">
-        <span class='plans-cell'> <strong> {{ plan.name }} </strong> </span>
-        <span class='plans-cell'> ${{ plan.price }}/month </span>
-        <button @click="setActivePlan"> Upgrade </button>
-    </template>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.19/vue.js"></script>
 
 
     <script>
-        Vue.component('plan', {
-                template: "#plan-template",
-                props: ['plan', 'active'],
-                methods: {
-                    setActivePlan: function() {
-                        this.active = this.plan;
-                    }
-                },
-            }
-        );
         var data ={
             plans: [
                 { name: 'Enterprise', price: 100 },
