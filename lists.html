@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plans and pricing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+</head>
+<body>
+    <style>
+        .plans-cell{
+            width: 200px;
+            display: inline-block;
+        }
+    </style>
+
+    <div id="app">
+
+        <h1> Plans and pricing</h1>
+        <h5> Exercise</h5>
+
+        <div v-for="plan in plans">
+            <plan :plan="plan" :active.sync="active"> </plan>
+        </div>
+        <pre>
+{{ $data | json }}
+        </pre>
+
+    </div>
+    <template id="plan-template">
+        <span class='plans-cell'> <strong> {{ plan.name }} </strong> </span>
+        <span class='plans-cell'> ${{ plan.price }}/month </span>
+        <button @click="setActivePlan"> Upgrade </button>
+    </template>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.19/vue.js"></script>
+
+
+    <script>
+        Vue.component('plan', {
+                template: "#plan-template",
+                props: ['plan', 'active'],
+                methods: {
+                    setActivePlan: function() {
+                        this.active = this.plan;
+                    }
+                },
+            }
+        );
+        var data ={
+            plans: [
+                { name: 'Enterprise', price: 100 },
+                { name: 'Pro', price: 50 },
+                { name: 'Personal', price: 10 },
+                { name: 'Free', price: 0 },
+            ],
+            active: {}
+        }
+        new Vue({
+            el: '#app',
+            data: data
+        });
+    </script>
+
+</body>
+</html>

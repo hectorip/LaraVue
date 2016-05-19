@@ -1,5 +1,5 @@
-Lara Vue
+Vue Js exercises
 ====
 
-Following the Vue Series in Larcasts.com
+Learning Vue!
 
