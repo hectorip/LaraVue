@@ -5,9 +5,12 @@
     <title>Lists</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
     <style>
-        .red{
+        .expensive{
             color: red;
             font-weight: bold;
+        }
+        .selected{
+            background-color: #777; 
         }
         .plans-cell{
             width: 200px;
@@ -22,7 +25,10 @@
 
         <h1> Lists </h1>
 
-        <div v-for="plan in plans" :class="{'red': plan.price > 30 }">
+        <div v-for="plan in plans"
+             :class="['red': plan.price > 30 , 'selected': plan.selected]"
+             @click="plan.selected = !plan.selected"
+        >
             {{plan.name}} - {{ plan.price }}
         </div>
         <pre>
@@ -37,10 +43,10 @@
     <script>
         var data ={
             plans: [
-                { name: 'Enterprise', price: 100 },
-                { name: 'Pro', price: 50 },
-                { name: 'Personal', price: 10 },
-                { name: 'Free', price: 0 },
+                { name: 'Enterprise', price: 100, selected: false },
+                { name: 'Pro', price: 50, selected: false },
+                { name: 'Personal', price: 10, selected: false },
+                { name: 'Free', price: 0, selected: false },
             ],
             active: {}
         }
