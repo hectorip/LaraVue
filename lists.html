@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <title>Lists</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-</head>
-<body>
     <style>
+        .red{
+            color: red;
+            font-weight: bold;
+        }
         .plans-cell{
             width: 200px;
             display: inline-block;
         }
     </style>
+</head>
+<body>
+
 
     <div id="app">
 
         <h1> Lists </h1>
 
-        <div v-for="plan in plans">
+        <div v-for="plan in plans" :class="{'red': plan.price > 30 }">
             {{plan.name}} - {{ plan.price }}
         </div>
         <pre>
-{{ $data | json }}
+            {{ $data | json }}
         </pre>
 
     </div>
