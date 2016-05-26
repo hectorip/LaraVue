@@ -1,4 +1,4 @@
-Vue Js exercises
+VueJS exercises
 ====
 
 Learning Vue!
